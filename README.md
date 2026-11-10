@@ -6,6 +6,10 @@ Daywell is a personal money and everyday planning app. This repository is being 
 
 `core.py` contains the Python rules for valid dates, amounts, records, and recurring bill dates. It has no third-party dependencies. The first upload is a foundation, not yet a runnable copy of the full app.
 
+## Stage 2: local money insights
+
+`insights.py` adds the calculations used for spending charts, budget comparisons, category suggestions, and the offline money helper. `tests/test_insights.py` checks these calculations with fictional records. This remains a partial source upload; the data server and interface are still in the complete local project.
+
 Run its tests with Python 3.13 or newer:
 
 ```text
