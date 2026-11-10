@@ -1,0 +1,19 @@
+# Keep personal records, local credentials, and generated backups out of source control.
+*.sqlite
+*.sqlite-*
+*.db
+*.dpapi
+backups/
+exports/
+.env
+.env.*
+
+# The downloadable desktop app bundles Windows Python separately.
+runtime/
+__pycache__/
+*.py[cod]
+.venv/
+node_modules/
+*.log
+*.zip
+Desktop.ini
