@@ -10,6 +10,10 @@ Daywell is a personal money and everyday planning app. This repository is being 
 
 `insights.py` adds the calculations used for spending charts, budget comparisons, category suggestions, and the offline money helper. `tests/test_insights.py` checks these calculations with fictional records. This remains a partial source upload; the data server and interface are still in the complete local project.
 
+## Stage 3: safe local migration
+
+`migrate.py` copies the earlier Daywell SQLite database, compares every table before switching to the copy, and preserves the original. `tests/test_migration.py` checks the copy with fictional records, import history, bill history, and an opaque test key. No customer database or key is included in this repository.
+
 Run its tests with Python 3.13 or newer:
 
 ```text
