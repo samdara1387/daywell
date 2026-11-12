@@ -28,6 +28,10 @@ The Python server adds SQLite persistence, backups, account sessions, and local 
 
 `public/money-model.js` calculates the monthly spending breakdown, daily calendar totals, bill timeline, and savings scenarios used by the browser interface. `tests/money-model.test.cjs` checks those calculations with fictional transactions. This model can be tested with `node --test tests/money-model.test.cjs`; the interface that displays it will follow in a later stage.
 
+## Stage 6: statement preview calculations
+
+`public/statement-model.js` reads extracted PDF text and CSV rows locally, suggests categories, and flags card payments, mismatched currencies, and possible duplicate expenses before saving. `tests/statement-model.test.cjs` checks those decisions using fictional data. Run it with `node --test tests/statement-model.test.cjs`. PDF text extraction and the review screen will be published with the remaining browser interface.
+
 ## Planned stages
 
 1. Statement import, duplicate detection, and backup tools.
