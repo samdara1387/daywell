@@ -181,7 +181,8 @@ class AccountHttpTests(unittest.TestCase):
 
             try:
                 self.assertEqual(call('/api/state')[0], 401)
-                self.assertIn(b'Create account', call('/')[1])
+                # The public code stage includes the API before its browser pages.
+                self.assertEqual(call('/')[0], 404)
                 owner = call('/api/auth/signup', 'POST', {'email': 'owner@example.com', 'password': 'a long owner passphrase', 'privacyAccepted': True})
                 self.assertEqual(owner[0], 200)
                 self.assertIn('HttpOnly', owner[2]['Set-Cookie'])
