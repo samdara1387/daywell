@@ -20,9 +20,12 @@ Run its tests with Python 3.13 or newer:
 python -m unittest discover -s tests -p "test_*.py" -v
 ```
 
+## Stage 4: local storage and API
+
+The Python server adds SQLite persistence, backups, account sessions, and local HTTP routes. The helper and email delivery modules are included as source; the tests use temporary databases and do not send live email or make live AI requests. This stage does not yet include the browser interface or desktop launcher and is not an online deployment.
+
 ## Planned stages
 
-1. Python data storage and API.
 2. Statement import, duplicate detection, and backup tools.
 3. Browser interface, charts, calendar, and interactions.
 4. Windows launcher, documentation, and end-to-end checks.
