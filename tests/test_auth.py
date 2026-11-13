@@ -181,13 +181,13 @@ class AccountHttpTests(unittest.TestCase):
 
             try:
                 self.assertEqual(call('/api/state')[0], 401)
-                # The public code stage includes the API before its browser pages.
-                self.assertEqual(call('/')[0], 404)
+                self.assertIn(b'Create account', call('/')[1])
                 owner = call('/api/auth/signup', 'POST', {'email': 'owner@example.com', 'password': 'a long owner passphrase', 'privacyAccepted': True})
                 self.assertEqual(owner[0], 200)
                 self.assertIn('HttpOnly', owner[2]['Set-Cookie'])
                 admin_cookie = owner[2]['Set-Cookie'].split(';', 1)[0]
                 admin_csrf = owner[1]['csrf']
+                self.assertIn(b'ADMIN WORKSPACE', call('/admin', cookie=admin_cookie)[1])
                 self.assertEqual(call('/api/admin/summary', cookie=admin_cookie)[0], 200)
                 signup = {'email': 'member@example.com', 'password': 'a long member passphrase', 'privacyAccepted': True}
                 self.assertEqual(call('/api/auth/signup', 'POST', signup)[0], 409)
@@ -199,6 +199,7 @@ class AccountHttpTests(unittest.TestCase):
                 self.assertEqual(server.app.accounts.users()[1]['email_verified'], 1)
                 member_cookie = member[2]['Set-Cookie'].split(';', 1)[0]
                 member_csrf = member[1]['csrf']
+                self.assertEqual(call('/admin', cookie=member_cookie)[0], 403)
                 self.assertEqual(call('/api/admin/summary', cookie=member_cookie)[0], 403)
                 item = {'date': '2026-11-10', 'type': 'expense', 'amount': 1200, 'category': 'Food', 'note': 'Private lunch'}
                 self.assertEqual(call('/api/transactions', 'POST', item, member_cookie)[0], 403)

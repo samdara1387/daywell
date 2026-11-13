@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Welcome to Daywell</title>
+  <link rel="icon" href="window-icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="auth.css">
+  <script src="auth.js" defer></script>
+</head>
+<body>
+  <main class="auth-layout">
+    <section class="auth-story" aria-label="About Daywell">
+      <a class="wordmark" href="/">daywell<span class="wordmark-dot">.</span></a>
+      <div class="story-content">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> YOUR MONEY, IN FOCUS</div>
+        <h1>Make room for<br><em>what matters.</em></h1>
+        <p>One calm place for spending, saving, and the everyday plans that move you forward.</p>
+        <div class="story-visual" aria-hidden="true"><div class="visual-grid"></div><div class="visual-card"><small>THIS MONTH</small><strong>See the whole picture</strong><div class="visual-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span>Move with clarity&nbsp; ↗</span></div></div>
+      </div>
+      <p class="story-foot">Thoughtful days add up.</p>
+    </section>
+    <section class="auth-panel">
+      <div class="auth-inner">
+        <div class="mobile-mark">daywell<span>.</span></div>
+        <div class="panel-kicker">WELCOME IN</div>
+        <h2 id="form-title">Sign in to your space</h2>
+        <p class="panel-intro" id="form-intro">Pick up where you left off.</p>
+        <div class="auth-switch" role="tablist" aria-label="Account action">
+          <button type="button" id="login-tab" role="tab" aria-selected="true">Sign in</button>
+          <button type="button" id="signup-tab" role="tab" aria-selected="false">Create account</button>
+        </div>
+        <form id="auth-form">
+          <div id="credentials-step">
+          <label class="field">Email address<input name="email" type="email" autocomplete="email" maxlength="254" required placeholder="you@example.com"></label>
+          <label class="field">Password<input name="password" type="password" autocomplete="current-password" minlength="5" required placeholder="Your password" id="password"></label>
+          <div id="signup-fields" hidden>
+            <p class="input-help">Use 5 or more characters. A longer password gives your account more protection.</p>
+            <label class="consent"><input name="privacyAccepted" type="checkbox"> <span>I understand that Daywell stores my financial and daily-planning records, and the Daywell administrator can view them for support. Administrator access is logged.</span></label>
+          </div>
+          <label class="remember"><input name="remember" type="checkbox" checked> Keep me signed in on this device for 30 days</label>
+          </div>
+          <div id="verification-step" hidden>
+            <p class="input-help" id="code-description">We sent an eight-digit code to your email. It expires in 10 minutes.</p>
+            <label class="field">Email code<input name="code" type="text" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{8}" maxlength="8" placeholder="00000000"></label>
+            <button type="button" id="restart-signup">Use another email or request a new code</button>
+          </div>
+          <p class="form-message" id="form-message" role="alert" aria-live="polite"></p>
+          <button class="submit" type="submit" id="submit-button">Sign in <span aria-hidden="true">↗</span></button>
+        </form>
+        <p class="local-note">This account preview keeps data on this computer. Online accounts will use managed cloud authentication after the cloud project is connected.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

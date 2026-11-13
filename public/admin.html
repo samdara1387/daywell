@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Daywell Admin</title><link rel="icon" href="window-icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="admin.css"><script src="admin.js" defer></script>
+</head>
+<body>
+  <header><a class="brand" href="/">daywell<span>.</span></a><span class="admin-mark">ADMIN WORKSPACE</span><nav><a href="/">Open my app</a><button id="logout" type="button">Sign out</button></nav></header>
+  <main>
+    <div class="hero"><div><span class="eyebrow">WORKSPACE OVERVIEW</span><h1>People and their progress.</h1><p>See who uses Daywell. Opening a person’s records is logged for accountability.</p></div><div class="hero-icon" aria-hidden="true">✦</div></div>
+    <div class="metrics"><div class="metric"><small>ACCOUNTS</small><strong id="user-count">—</strong><span>Registered locally</span></div><div class="metric"><small>ACCESS</small><strong>Logged</strong><span>Every record view is recorded</span></div><div class="metric"><small>DATA</small><strong>Local</strong><span>No cloud records yet</span></div></div>
+    <section class="panel"><div class="panel-head"><div><h2>Accounts</h2><p>Select a workspace to see its records.</p></div><span id="admin-email"></span></div><div id="users" class="user-list"></div></section>
+    <section class="panel"><div class="panel-head"><div><h2>Email verification</h2><p>Connect a verified sender so new accounts receive an eight-digit code.</p></div><span id="email-status">Checking…</span></div>
+      <form id="email-settings" class="settings-form">
+        <label>SMTP server<input name="host" value="smtp-relay.brevo.com" required autocomplete="off"></label>
+        <label>Port<select name="port"><option value="587">587 — TLS</option><option value="465">465 — SSL</option></select></label>
+        <label>SMTP login<input name="username" required autocomplete="off"></label>
+        <label>Verified sender email<input name="sender" type="email" required autocomplete="email"></label>
+        <label>SMTP key<input name="password" type="password" required autocomplete="new-password" minlength="12" placeholder="From your email provider"></label>
+        <button type="submit">Save email settings</button>
+      </form>
+      <div class="email-actions"><button type="button" id="test-email">Send a test email to me</button><button type="button" id="start-my-verification">Verify my email</button></div>
+      <form id="verify-my-email" class="verify-form" hidden><label>Eight-digit code<input name="code" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{8}" maxlength="8" required></label><button type="submit">Confirm code</button></form>
+      <p class="settings-message" id="email-message" role="status" aria-live="polite"></p>
+    </section>
+    <section class="panel detail" id="detail" hidden><div class="panel-head"><div><small class="eyebrow">ACCOUNT DETAILS</small><h2 id="detail-title"></h2><p>Viewing this account was added to the access log.</p></div><button type="button" id="close-detail">Close</button></div><div id="detail-metrics" class="detail-metrics"></div><details><summary>View all saved records</summary><pre id="detail-json"></pre></details></section>
+    <p class="footnote">This is the local development dashboard. Online account administration will require a separate protected role and stronger sign-in checks.</p>
+  </main>
+  <dialog id="admin-unlock"><form id="admin-unlock-form"><span class="eyebrow">PRIVATE ACCESS</span><h2>Confirm it’s you</h2><p>Enter your password to view another person’s records or change email delivery. This check lasts five minutes.</p><label>Password<input name="password" type="password" autocomplete="current-password" required></label><p id="unlock-error" role="alert"></p><div class="unlock-actions"><button type="button" id="cancel-unlock">Cancel</button><button type="submit">Continue</button></div></form></dialog>
+</body>
+</html>

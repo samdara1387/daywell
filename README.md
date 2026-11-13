@@ -32,6 +32,10 @@ The Python server adds SQLite persistence, backups, account sessions, and local 
 
 `public/statement-model.js` reads extracted PDF text and CSV rows locally, suggests categories, and flags card payments, mismatched currencies, and possible duplicate expenses before saving. `tests/statement-model.test.cjs` checks those decisions using fictional data. Run it with `node --test tests/statement-model.test.cjs`. PDF text extraction and the review screen will be published with the remaining browser interface.
 
+## Stage 7: local account screens
+
+`public/auth.*` supplies sign-in, account creation, and emailed-code confirmation once an administrator configures email delivery. `public/admin.*` supplies the local administrator dashboard and password confirmation for sensitive actions. `public/window-icon.svg` is the shared icon. The access tests verify that a signed-in administrator can open the dashboard while a member cannot. These pages work with the local API; the main finance interface is still being staged.
+
 ## Planned stages
 
 1. Statement import, duplicate detection, and backup tools.
