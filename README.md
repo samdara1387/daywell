@@ -1,6 +1,6 @@
 # Daywell
 
-Daywell is a personal money and everyday planning app. This repository is being rebuilt in small, reviewable parts from the complete local project. The desktop app and personal records remain on the owner's computer while the source is published in stages.
+Daywell is a local personal money and everyday planning app. Its backend is mostly Python; HTML, CSS, and JavaScript draw the interface and read statement files. This repository contains source code and fictional tests. Personal records and credentials stay outside the repository.
 
 ## Stage 1: core rules
 
@@ -40,12 +40,17 @@ The Python server adds SQLite persistence, backups, account sessions, and local 
 
 `public/index.html` and its local scripts and styles now provide the overview, transactions, charts, calendar, planning, settings, account navigation, and reviewed statement import. The bundled PDF.js files support readable PDF text extraction in the browser; their license and version record are in `public/vendor`. The three browser tests cover page history and the interactive month comparison. Run them with `node --test tests/*.test.cjs` in a shell that expands the wildcard, or pass each file to Node explicitly.
 
-## Planned stages
+## Run the source on Windows
 
-1. Statement import, duplicate detection, and backup tools.
-2. Browser interface, charts, calendar, and interactions.
-3. Windows launcher, documentation, and end-to-end checks.
+Install Python 3.13 or newer. In PowerShell, from this folder, use a disposable data directory and let the server choose a free local port:
 
-Each stage will be committed when it is ready and tested. The commit dates will reflect the actual work; uploads will not be delayed or backdated for appearance.
+```powershell
+python -m unittest discover -s tests -p "test_*.py" -q
+node --test tests/*.test.cjs
+$env:DAYWELL_ACCOUNTS = "1"
+python server.py --port 0 --data-dir "$env:TEMP\DaywellSourceDemo"
+```
 
-Personal databases, account statements, credentials, and the bundled Windows runtime are excluded from GitHub.
+Open the local address printed by the server. Stop it with Ctrl+C. The JavaScript tests require Node.js. `Start Daywell.cmd`, `Start Daywell.vbs`, and `launcher.py` are for the packaged Windows desktop edition, which includes a separately distributed Python runtime. That runtime, personal databases, statements, exports, backups, and credentials are excluded from GitHub.
+
+See `DEVELOPMENT.md` for the work loop, `LEARN_PYTHON.md` for annotated code, and `SECURITY_READINESS.md` for the online release gate. The cloud schema in `cloud/` is source only; Daywell is not deployed online.
