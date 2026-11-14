@@ -1,0 +1,9 @@
+.app-history{display:flex;align-items:center;gap:4px;flex:none;padding-right:13px;margin-left:-12px;border-right:1px solid var(--line)}
+.app-history button{width:34px;height:34px;min-width:34px;border:1px solid var(--line);border-radius:9px;background:var(--card);display:grid;place-items:center;color:var(--text);transition:background .16s,border-color .16s,transform .16s}
+.app-history button svg{width:17px;height:17px;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.app-history button:not(:disabled):hover{background:var(--card2);border-color:var(--accent);transform:translateY(-1px)}
+.app-history button:disabled{opacity:.32;cursor:default}
+.top-shell .brand-group{gap:14px}
+@media(max-width:700px){.app-history{gap:3px;padding-right:9px;margin-left:-7px}.app-history button{width:30px;height:30px;min-width:30px;border-radius:8px}.app-history button svg{width:15px;height:15px}.top-shell .brand-group{gap:10px}}
+@media(max-width:360px){.app-history button{width:27px;height:27px;min-width:27px}.top-shell .brand-group{gap:7px}}
+@media(prefers-reduced-motion:reduce){.app-history button{transition:none}}

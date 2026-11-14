@@ -36,6 +36,10 @@ The Python server adds SQLite persistence, backups, account sessions, and local 
 
 `public/auth.*` supplies sign-in, account creation, and emailed-code confirmation once an administrator configures email delivery. `public/admin.*` supplies the local administrator dashboard and password confirmation for sensitive actions. `public/window-icon.svg` is the shared icon. The access tests verify that a signed-in administrator can open the dashboard while a member cannot. These pages work with the local API; the main finance interface is still being staged.
 
+## Stage 8: complete browser interface
+
+`public/index.html` and its local scripts and styles now provide the overview, transactions, charts, calendar, planning, settings, account navigation, and reviewed statement import. The bundled PDF.js files support readable PDF text extraction in the browser; their license and version record are in `public/vendor`. The three browser tests cover page history and the interactive month comparison. Run them with `node --test tests/*.test.cjs` in a shell that expands the wildcard, or pass each file to Node explicitly.
+
 ## Planned stages
 
 1. Statement import, duplicate detection, and backup tools.

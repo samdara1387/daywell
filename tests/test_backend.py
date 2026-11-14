@@ -139,7 +139,7 @@ class HttpTests(unittest.TestCase):
                 self.assertEqual(request('/api/health',headers={'Host':'localhost:9999'})[0],403)
                 self.assertEqual(request('/api/settings','POST',{},headers={'Content-Type':'application/json','Origin':'https://evil.example'})[0],403)
                 self.assertEqual(request('/api/settings','POST',{},headers={'Content-Type':'text/plain'})[0],415)
-                self.assertEqual(request('/')[0],404)
+                status,data,headers=request('/');self.assertEqual(status,200);self.assertIn("frame-ancestors 'none'",headers['Content-Security-Policy']);self.assertEqual(headers['X-Frame-Options'],'DENY');self.assertEqual(headers['Referrer-Policy'],'no-referrer')
                 self.assertEqual(request('/%2e%2e/server.py')[0],403)
                 self.assertEqual(request('/api/not-found')[0],404)
             finally:http.shutdown();http.server_close();http.app.close();thread.join()
