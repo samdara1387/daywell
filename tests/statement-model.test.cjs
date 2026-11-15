@@ -49,3 +49,11 @@ test('CSV reader preserves quoted merchant names and exact cents', () => {
   assert.equal(statements.amount(rows[1][2]), 1234);
   assert.equal(statements.parseDate('2026-02-30'), '');
 });
+
+test('CSV delimiter detection ignores commas inside a multiline quoted description', () => {
+  const rows = statements.csv(
+    'Date;Description;Amount\n2026-10-05;"Coffee,\nBakery, Cafe, Market, Store";12.34\n',
+  );
+  assert.deepEqual(rows[0], ['Date', 'Description', 'Amount']);
+  assert.deepEqual(rows[1], ['2026-10-05', 'Coffee,\nBakery, Cafe, Market, Store', '12.34']);
+});

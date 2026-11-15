@@ -25,7 +25,19 @@
  }
  function csv(text,delimiter){
   text=String(text).replace(/^\uFEFF/,'');if(text.length>10e6)throw Error('Use a file smaller than 10 MB.');
-  if(!delimiter){const sample=text.split(/\r?\n/).slice(0,20),score=d=>Math.max(0,...sample.map(line=>{let quoted=false,n=0;for(let i=0;i<line.length;i++){if(line[i]==='"'){if(quoted&&line[i+1]==='"')i++;else quoted=!quoted;}else if(!quoted&&line[i]===d)n++;}return n}));delimiter=[',',';','\t'].sort((a,b)=>score(b)-score(a))[0];}
+  if(!delimiter){
+   // Count separators in logical rows so commas inside multiline quotes stay part of a description.
+   const score=d=>{let quoted=false,count=0,best=0,rows=0;
+    for(let i=0;i<text.length&&rows<20;i++){
+     const c=text[i];
+     if(c==='"'){if(quoted&&text[i+1]==='"')i++;else quoted=!quoted;}
+     else if(!quoted&&c===d)count++;
+     else if(!quoted&&(c==='\r'||c==='\n')){best=Math.max(best,count);count=0;rows++;if(c==='\r'&&text[i+1]==='\n')i++;}
+    }
+    return Math.max(best,count);
+   };
+   delimiter=[',',';','\t'].sort((a,b)=>score(b)-score(a))[0];
+  }
   const rows=[];let row=[],cell='',quote=false;
   for(let i=0;i<text.length;i++){const c=text[i];if(c==='"'){if(quote&&text[i+1]==='"'){cell+='"';i++;}else if(!quote&&cell.length)cell+=c;else quote=!quote;}else if(c===delimiter&&!quote){row.push(cell);cell='';}else if((c==='\r'||c==='\n')&&!quote){if(c==='\r'&&text[i+1]==='\n')i++;row.push(cell);if(row.some(x=>clean(x)))rows.push(row);row=[];cell='';}else cell+=c;if(rows.length>5000)throw Error('Import up to 5,000 rows at a time.');}
   if(quote)throw Error('A quoted CSV field is unfinished. Export the file again from your bank.');row.push(cell);if(row.some(x=>clean(x)))rows.push(row);return rows;

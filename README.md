@@ -30,7 +30,9 @@ The Python server adds SQLite persistence, backups, account sessions, and local 
 
 ## Stage 6: statement preview calculations
 
-`public/statement-model.js` reads extracted PDF text and CSV rows locally, suggests categories, and flags card payments, mismatched currencies, and possible duplicate expenses before saving. `tests/statement-model.test.cjs` checks those decisions using fictional data. Run it with `node --test tests/statement-model.test.cjs`. PDF text extraction and the review screen will be published with the remaining browser interface.
+`public/statement-model.js` reads extracted PDF text and CSV rows locally, suggests categories, and flags card payments, mismatched currencies, and possible duplicate expenses before saving. `tests/statement-model.test.cjs` checks those decisions with fictional data. Run it with `node --test tests/statement-model.test.cjs`. PDF text extraction and the review screen are in `public/statement-import.js` and `public/vendor`.
+
+The CSV reader also detects separators across multiline quoted descriptions, so punctuation inside a merchant description cannot change how the columns are split.
 
 ## Stage 7: local account screens
 
