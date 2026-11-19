@@ -1,4 +1,4 @@
-/* Pure calculations for Daywell's interactive page tools. Amounts stay in cents. */
+/* Pure calculations for Money Theory's interactive page tools. Amounts stay in cents. */
 (function(root,factory){const model=factory();if(typeof module==='object'&&module.exports)module.exports=model;else root.DaywellStudioModel=model;})(typeof globalThis==='object'?globalThis:this,()=>{
   'use strict';
   const sum=items=>items.reduce((n,t)=>n+t.amount,0);

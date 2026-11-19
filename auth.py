@@ -115,11 +115,11 @@ class AccountStore:
                 from key_store import windows_crypt
                 value = windows_crypt(value, True, b'Daywell.AccountPepper.v1')
             if len(value) != 32:
-                raise RuntimeError('The Daywell account protection key is invalid.')
+                raise RuntimeError('The Money Theory account protection key is invalid.')
             return value
         protected_users = self.db.execute('SELECT count(*) FROM users WHERE hash_version>=2').fetchone()[0]
         if protected_users:
-            raise RuntimeError('The Daywell account protection key is missing. Restore it before signing in.')
+            raise RuntimeError('The Money Theory account protection key is missing. Restore it before signing in.')
         value = secrets.token_bytes(32)
         if os.name == 'nt':
             from key_store import windows_crypt

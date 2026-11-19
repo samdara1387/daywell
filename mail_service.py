@@ -82,13 +82,13 @@ class EmailDelivery:
     def send_code(self, address, code):
         if not re.fullmatch(r'[0-9]{8}', code):
             raise ValueError('Invalid verification code')
-        self.send(address, 'Your Daywell verification code',
-                  'Your Daywell verification code is ' + code + '.\n\nIt expires in 10 minutes. If you did not request it, you can ignore this email.')
+        self.send(address, 'Your Money Theory verification code',
+                  'Your Money Theory verification code is ' + code + '.\n\nIt expires in 10 minutes. If you did not request it, you can ignore this email.')
 
     # Let the administrator verify SMTP delivery before inviting other users.
     def send_test(self, address):
-        self.send(address, 'Daywell email delivery test',
-                  'Your Daywell email delivery setup is working. No action is needed.')
+        self.send(address, 'Money Theory email delivery test',
+                  'Your Money Theory email delivery setup is working. No action is needed.')
 
     # Use TLS for every SMTP connection and keep failures free of credentials.
     def send(self, address, subject, text):

@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Daywell Admin</title><link rel="icon" href="window-icon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="admin.css"><script src="admin.js" defer></script>
+  <title>Money Theory Admin</title><link rel="icon" href="window-icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="admin.css"><link rel="stylesheet" href="money-theory-theme.css"><script src="admin.js" defer></script>
 </head>
 <body>
-  <header><a class="brand" href="/">daywell<span>.</span></a><span class="admin-mark">ADMIN WORKSPACE</span><nav><a href="/">Open my app</a><button id="logout" type="button">Sign out</button></nav></header>
+  <header><a class="brand admin-brand" href="/"><img src="window-icon.svg" alt=""><span>money <em>theory</em></span></a><span class="admin-mark">ADMIN WORKSPACE</span><nav><a href="/">Open my app</a><button id="logout" type="button">Sign out</button></nav></header>
   <main>
-    <div class="hero"><div><span class="eyebrow">WORKSPACE OVERVIEW</span><h1>People and their progress.</h1><p>See who uses Daywell. Opening a person’s records is logged for accountability.</p></div><div class="hero-icon" aria-hidden="true">✦</div></div>
+    <div class="hero"><div><span class="eyebrow">WORKSPACE OVERVIEW</span><h1>People and their progress.</h1><p>See who uses Money Theory. Opening a person’s records is logged for accountability.</p></div><div class="hero-icon" aria-hidden="true">✦</div></div>
     <div class="metrics"><div class="metric"><small>ACCOUNTS</small><strong id="user-count">—</strong><span>Registered locally</span></div><div class="metric"><small>ACCESS</small><strong>Logged</strong><span>Every record view is recorded</span></div><div class="metric"><small>DATA</small><strong>Local</strong><span>No cloud records yet</span></div></div>
     <section class="panel"><div class="panel-head"><div><h2>Accounts</h2><p>Select a workspace to see its records.</p></div><span id="admin-email"></span></div><div id="users" class="user-list"></div></section>
     <section class="panel"><div class="panel-head"><div><h2>Email verification</h2><p>Connect a verified sender so new accounts receive an eight-digit code.</p></div><span id="email-status">Checking…</span></div>

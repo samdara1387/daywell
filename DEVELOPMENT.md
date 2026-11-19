@@ -1,6 +1,6 @@
-# Daywell development
+# Money Theory development
 
-Daywell is a local personal finance app. Python owns validation, storage, statement import, backups, and the HTTP API. The browser code in `public/` renders the interface. Customer records live outside this source folder under `%LOCALAPPDATA%\DaywellPython`.
+Money Theory is a local personal finance app. Python owns validation, storage, statement import, backups, and the HTTP API. The browser code in `public/` renders the interface. Customer records live outside this source folder under `%LOCALAPPDATA%\DaywellPython`.
 
 ## Product direction
 

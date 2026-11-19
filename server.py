@@ -171,12 +171,12 @@ class DaywellApp:
             if self.helper:
                 result=self.helper.handle(method,path,query or {},body)
                 if result is not None:return result
-            if method=='GET' and path=='/api/health':return 200,{'ok':True,'app':'Daywell','version':'3.0','backend':'Python','pid':os.getpid()}
+            if method=='GET' and path=='/api/health':return 200,{'ok':True,'app':'Money Theory','version':'3.0','backend':'Python','pid':os.getpid()}
             if method=='GET' and path=='/api/state':return 200,self.state()
-            if method=='GET' and path=='/api/backup':return 200,self.export_state(),{'Content-Disposition':'attachment; filename="daywell-backup.json"'}
+            if method=='GET' and path=='/api/backup':return 200,self.export_state(),{'Content-Disposition':'attachment; filename="money-theory-backup.json"'}
             if method=='GET' and path=='/api/export.csv':
                 rows=[['Date','Type','Amount','Currency','Category','Note']]+[[t['date'],t['type'],f"{t['amount']/100:.2f}",self.settings()['currency'],t['category'],t['note']] for t in sorted(self.get('transactions'),key=lambda t:t['date'])]
-                return 200,'\ufeff'+'\r\n'.join(','.join(csv_cell(c) for c in row) for row in rows),{'Content-Type':'text/csv; charset=utf-8','Content-Disposition':'attachment; filename="daywell-transactions.csv"'}
+                return 200,'\ufeff'+'\r\n'.join(','.join(csv_cell(c) for c in row) for row in rows),{'Content-Type':'text/csv; charset=utf-8','Content-Disposition':'attachment; filename="money-theory-transactions.csv"'}
             if method=='POST' and path=='/api/restore':
                 state=validate_state(body)
                 extra=body.get('_daywell')
@@ -262,7 +262,7 @@ class DaywellApp:
 
 # Translate local HTTP requests into app actions and responses.
 class DaywellHandler(BaseHTTPRequestHandler):
-    server_version='Daywell/3.0'
+    server_version='MoneyTheory/3.0'
     # Suppress the standard noisy request log in the desktop window.
     def log_message(self,*args):pass
     # Handle a read-only browser request.
@@ -341,12 +341,12 @@ def create_server(data_dir=None,port=47832,public_dir=None,helper=True,accounts=
     return DaywellHTTPServer(('127.0.0.1',port),app)
 
 if __name__=='__main__':
-    parser=argparse.ArgumentParser(description='Daywell local finance app')
+    parser=argparse.ArgumentParser(description='Money Theory local finance app')
     parser.add_argument('--port',type=int,default=int(os.environ.get('PORT','47832')))
     parser.add_argument('--data-dir',default=None)
     args=parser.parse_args()
     server=create_server(args.data_dir,args.port,accounts=os.environ.get('DAYWELL_ACCOUNTS')=='1')
-    print(f'Daywell running at http://127.0.0.1:{server.server_port}',flush=True)
+    print(f'Money Theory running at http://127.0.0.1:{server.server_port}',flush=True)
     try:server.serve_forever()
     except KeyboardInterrupt:pass
     finally:server.server_close();server.app.close()

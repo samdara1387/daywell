@@ -1,6 +1,6 @@
-# Learn Python with Daywell
+# Learn Python with Money Theory
 
-This is the source code for the working Daywell app. All backend features use Python. The `#` lines beside the Python code are comments: they explain what each part does, and Python ignores them when running.
+This is the source code for the working Money Theory app. All backend features use Python. The `#` lines beside the Python code are comments: they explain what each part does, and Python ignores them when running.
 
 ## Reading order
 

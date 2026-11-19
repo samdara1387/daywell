@@ -1,6 +1,6 @@
 'use strict';
 
-// The first screen's hero uses Daywell's saved transactions, without changing records.
+// The first screen's hero uses Money Theory's saved transactions, without changing records.
 // This browser code draws and connects the chart; the Python server still owns the data.
 const DaywellPulse = (() => {
   const model = typeof module !== 'undefined' ? require('./monthly-compare.js') : DaywellMonthChart;
@@ -35,7 +35,7 @@ const DaywellPulse = (() => {
     };
   }
 
-  // Create the chart, the selected-month facts, and links to related Daywell tools.
+  // Create the chart, the selected-month facts, and links to related Money Theory tools.
   function render(transactions, selectedDate, formatMoney, currency) {
     const year = yearFor(selectedDate);
     const rows = model.monthlyTotals(transactions, year);

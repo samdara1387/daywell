@@ -6,7 +6,7 @@ function importShell(step,content){
 }
 function openStatementImport(){
  statementSession={rows:[],fileHash:'',options:{order:'mdy',sign:'positive',decimal:'dot',mode:'amount',currency:state.settings.currency,end:''}};
- importShell(0,`<div class="import-intro"><div class="import-file-art" aria-hidden="true"><span>≡</span><i>✓</i></div><h3>Upload a statement. Preview your expenses.</h3><p>Choose a readable credit-card PDF. Daywell finds the purchases, prepares a preview, and saves the expenses when you confirm.</p></div><label class="import-drop"><strong>Choose a PDF statement</strong><span>Readable PDF · up to 10 MB</span><input id="statement-file" type="file" accept=".csv,.pdf,text/csv,application/pdf"></label><details class="import-help"><summary>Have a CSV instead?</summary><p>CSV imports still let you review columns and expenses. Scanned or protected PDFs need a CSV export from your bank.</p></details><div id="import-history"></div>`);
+ importShell(0,`<div class="import-intro"><div class="import-file-art" aria-hidden="true"><span>≡</span><i>✓</i></div><h3>Upload a statement. Preview your expenses.</h3><p>Choose a readable credit-card PDF. Money Theory finds the purchases, prepares a preview, and saves the expenses when you confirm.</p></div><label class="import-drop"><strong>Choose a PDF statement</strong><span>Readable PDF · up to 10 MB</span><input id="statement-file" type="file" accept=".csv,.pdf,text/csv,application/pdf"></label><details class="import-help"><summary>Have a CSV instead?</summary><p>CSV imports still let you review columns and expenses. Scanned or protected PDFs need a CSV export from your bank.</p></details><div id="import-history"></div>`);
  $('#statement-file').onchange=async e=>{const file=e.target.files[0];if(file)await readStatementFile(file)};
  const current=statementSession;api('imports').then(items=>{if(statementSession!==current||!$('#import-history'))return;const last=items.find(i=>!i.undone&&i.count);if(last){$('#import-history').innerHTML=`<div class="import-history"><span>Last import · ${last.count} expenses · ${new Date(last.created).toLocaleDateString()}</span><button class="text-button" id="undo-previous">Undo this import</button></div>`;$('#undo-previous').onclick=()=>showImportUndo(last.id,last.count)}}).catch(()=>{});
  $('#statement-modal').onclose=()=>{statementSession=null};
@@ -42,7 +42,7 @@ async function autoImportPdf(session,confirmed=false){
  if(!plan.selected.length){
   const repeated=plan.rows.length>0&&plan.rows.every(r=>r.duplicate||r.reason==='Possible duplicate — excluded');
   const title=plan.documentType==='resume'?'This looks like a résumé':repeated?'This statement is already imported':'No expenses were added';
-  const explanation=plan.documentType==='resume'?'This file contains résumé information rather than a list of purchases. Choose a bank or credit-card statement to add expenses.':repeated?'All detected purchases already appear in Daywell. Nothing was added again.':plan.currencyMismatch?'The statement labels a different currency from your Daywell workspace. Nothing was added.':'Daywell could not identify purchases confidently from this PDF. Your records are unchanged.';
+  const explanation=plan.documentType==='resume'?'This file contains résumé information rather than a list of purchases. Choose a bank or credit-card statement to add expenses.':repeated?'All detected purchases already appear in Money Theory. Nothing was added again.':plan.currencyMismatch?'The statement labels a different currency from your Money Theory workspace. Nothing was added.':'Money Theory could not identify purchases confidently from this PDF. Your records are unchanged.';
   importShell(3,`<div class="import-success"><h3>${title}</h3><p>${explanation}</p><button class="secondary" id="pdf-try-another">Try another file</button>${plan.documentType==='resume'?'':'<button class="text-button" id="pdf-review">Inspect detected lines</button>'}</div>`);
   $('#statement-modal h2').textContent=title;
   $('#pdf-try-another').onclick=openStatementImport;if($('#pdf-review'))$('#pdf-review').onclick=showImportReview;return;
@@ -52,7 +52,7 @@ async function autoImportPdf(session,confirmed=false){
   $('#statement-modal h2').textContent='Preview before saving';
   $('#pdf-confirm').onclick=()=>autoImportPdf(session,true);$('#pdf-cancel').onclick=()=>$('#statement-modal').close();$('#pdf-adjust').onclick=showImportReview;return;
  }
- importShell(3,`<div class="import-success"><div class="import-success-icon">↗</div><h3>Adding ${plan.selected.length} expenses…</h3><p>Reading the clear purchases into your Daywell records.</p></div>`);
+ importShell(3,`<div class="import-success"><div class="import-success-icon">↗</div><h3>Adding ${plan.selected.length} expenses…</h3><p>Reading the clear purchases into your Money Theory records.</p></div>`);
  $('#import-close').disabled=true;$('#statement-modal').oncancel=e=>e.preventDefault();
  try{
   if(!await approveStatementMonths(session,plan.selected))return;

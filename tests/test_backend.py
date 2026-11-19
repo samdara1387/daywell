@@ -134,7 +134,7 @@ class HttpTests(unittest.TestCase):
                     with urllib.request.urlopen(req) as res:return res.status,res.read(),dict(res.headers)
                 except urllib.error.HTTPError as res:return res.code,res.read(),dict(res.headers)
             try:
-                status,data,headers=request('/api/health');self.assertEqual(status,200);self.assertEqual(json.loads(data)['app'],'Daywell');self.assertEqual(headers['X-Frame-Options'],'DENY');self.assertEqual(headers['Referrer-Policy'],'no-referrer')
+                status,data,headers=request('/api/health');self.assertEqual(status,200);self.assertEqual(json.loads(data)['app'],'Money Theory');self.assertEqual(headers['X-Frame-Options'],'DENY');self.assertEqual(headers['Referrer-Policy'],'no-referrer')
                 self.assertEqual(request('/api/health',headers={'Host':'evil.example:99'})[0],403)
                 self.assertEqual(request('/api/health',headers={'Host':'localhost:9999'})[0],403)
                 self.assertEqual(request('/api/settings','POST',{},headers={'Content-Type':'application/json','Origin':'https://evil.example'})[0],403)

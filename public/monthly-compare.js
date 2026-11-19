@@ -1,6 +1,6 @@
 'use strict';
 
-// This chart uses the same transaction records as the rest of Daywell.
+// This chart uses the same transaction records as the rest of Money Theory.
 // Money stays in integer cents until the existing money() formatter displays it.
 const DaywellMonthChart = (() => {
   const shortNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -60,7 +60,7 @@ const DaywellMonthChart = (() => {
     return `<section class="card month-compare" id="monthly-comparison" aria-labelledby="month-compare-title">
       <div class="month-compare-head">
         <div><span class="eyebrow">THE YEAR IN MOTION</span><h2 id="month-compare-title">How your months compare<span class="accent-dot">.</span></h2>
-          <p>One income bar and one expense bar for each month. Select a month to explore it across Daywell.</p></div>
+          <p>One income bar and one expense bar for each month. Select a month to explore it across Money Theory.</p></div>
         <div class="month-compare-controls"><button type="button" data-year-shift="-1" aria-label="Previous comparison year">‹</button>
           <strong aria-live="polite">${year}</strong><button type="button" data-year-shift="1" aria-label="Next comparison year">›</button></div>
       </div>

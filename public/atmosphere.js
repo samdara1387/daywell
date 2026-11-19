@@ -1,4 +1,4 @@
-/* Daywell Atmosphere. Local graphics only; no financial records are changed here. */
+/* Money Theory Atmosphere. Local graphics only; no financial records are changed here. */
 (() => {
   'use strict';
   const body = document.body;

@@ -1,0 +1,72 @@
+/* Money Theory uses ink, lavender and mint with distinct financial data colors. */
+:root,body{
+  --bg:#0d1122;--side:#11172b;--card:#171d34;--card2:#202842;
+  --text:#f3f3ff;--muted:#aab3ce;--line:#35405d;
+  --accent:#b9a8ff;--accent-ink:#17142b;--red:#ff9bac;
+  --blue:#91cfff;--gold:#ffd299;--glow:185,168,255;
+  --secondary-glow:102,219,198;--panel:rgba(23,29,52,.94);
+  --data-income:#66dbc6;--data-expense:#ffb18c;--data-goal:#c9adff;
+  --data-life:#91cfff;--data-alert:#ff9bac;color-scheme:dark;
+}
+body.light{
+  --bg:#f5f4fa;--side:#eeedf7;--card:#fff;--card2:#efecf8;
+  --text:#242342;--muted:#5f6681;--line:#d9d9e9;
+  --accent:#6247a9;--accent-ink:#fff;--red:#aa3455;
+  --blue:#28638d;--gold:#8e5c22;--glow:98,71,169;
+  --secondary-glow:34,125,110;--panel:rgba(255,255,255,.95);
+  --data-income:#167d6f;--data-expense:#a45b2b;--data-goal:#6947aa;
+  --data-life:#236d9a;--data-alert:#ae3456;color-scheme:light;
+}
+body[data-scene=ember]{--accent:#ffc099;--accent-ink:#2d1b22;--glow:255,192,153}
+body[data-scene=tide]{--accent:#91cfff;--accent-ink:#10243d;--glow:145,207,255}
+body.light[data-scene=ember]{--accent:#a35b31;--accent-ink:#fff;--glow:163,91,49}
+body.light[data-scene=tide]{--accent:#28638d;--accent-ink:#fff;--glow:40,99,141}
+body{background:radial-gradient(circle at 70% -20%,#30295665,transparent 38%),var(--bg);color:var(--text)}
+body.light{background:radial-gradient(circle at 70% -20%,#d8d1f7a0,transparent 40%),var(--bg)}
+.top-shell{background:color-mix(in srgb,var(--side) 95%,transparent);border-bottom:1px solid var(--line)}
+.card,.stat,dialog{border-color:var(--line);box-shadow:0 18px 50px #05081924}
+body.light .card,body.light .stat,body.light dialog{box-shadow:0 12px 35px #29284b12}
+.top-shell .brand{display:flex;align-items:center;gap:10px;font-size:0}
+.top-shell .brandmark{display:inline-block;width:30px;height:30px;border:0;border-radius:9px;background:#11172c url('window-icon.svg') center/cover no-repeat;box-shadow:0 4px 16px #070b2355;color:transparent;font-size:0}
+.brand-wordmark{display:inline-flex;align-items:baseline;gap:4px;letter-spacing:-.8px;color:var(--text);font:600 19px/1 'Segoe UI Variable Display','Segoe UI',sans-serif}
+.brand-wordmark em{font:italic 500 20px/1 Georgia,serif;color:var(--accent)}
+body.light .brand-wordmark em{color:#6247a9}
+.pulse-hero{background:radial-gradient(circle at 75% -30%,#534493a0,transparent 52%),linear-gradient(140deg,#151b39,#131a30 60%,#102936);border-color:#aa9cff66;color:#f7f5ff;box-shadow:0 28px 75px #06091a77,inset 0 1px #d8ccff2b}
+.pulse-hero::before{background-image:linear-gradient(#b9a8ff13 1px,transparent 1px),linear-gradient(90deg,#b9a8ff13 1px,transparent 1px)}
+.pulse-month:hover,.pulse-month:focus-visible,.pulse-month.active{background:linear-gradient(0deg,#b9a8ff23,transparent 82%)}
+.pulse-month.active::after{background:#b9a8ff;box-shadow:0 0 12px #b9a8ff}
+.pulse-month-label,.pulse-chart-foot{color:#c4c9e2}
+.pulse-chart-foot button{color:#c9bdff}
+.hero-primary,.primary{background:var(--accent);color:var(--accent-ink)}
+input,select,textarea{accent-color:var(--accent)}
+*:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media(max-width:650px){.brand-wordmark{font-size:16px}.brand-wordmark em{font-size:17px}.top-shell .brandmark{width:25px;height:25px}}
+
+/* Sign-in uses the same mark with a light, readable form surface. */
+.auth-story{background:radial-gradient(circle at 74% 65%,#4c3d8488,transparent 41%),radial-gradient(circle at 5% 10%,#2c5a6970,transparent 42%),linear-gradient(150deg,#171c3c,#10172a 75%)}
+.auth-story:after{background-image:linear-gradient(#c2b7ff12 1px,transparent 1px),linear-gradient(90deg,#c2b7ff12 1px,transparent 1px)}
+.auth-panel{background:#f5f4fa;color:#242342}
+.auth-panel .panel-kicker,.auth-panel .input-help,.auth-panel .local-note{color:#66647e}
+.wordmark,.mobile-mark{display:inline-flex;align-items:center;gap:10px;font:600 25px/1 'Segoe UI Variable Display','Segoe UI',sans-serif;letter-spacing:-.7px;color:#f4f1ff}
+.wordmark span,.mobile-mark span{color:inherit}
+.wordmark img,.mobile-mark img,.admin-brand img{width:32px;height:32px;flex:none}
+.wordmark em,.mobile-mark em{font:italic 500 26px/1 Georgia,serif;color:#c1b4ff}
+.mobile-mark{color:#242342}.mobile-mark em{color:#6247a9}
+.visual-card{border-color:#c3b8ff50;background:linear-gradient(145deg,#b9a8ff23,#66dbc612)}
+.visual-card small,.visual-card span{color:#cbd0ea}
+.auth-switch{background:#e9e5f3}.auth-switch button{color:#6a6b82}
+.auth-switch button[aria-selected=true]{color:#33265d}
+.submit{background:#6247a9;box-shadow:0 11px 26px #6247a933}.submit:hover{background:#513694}
+
+/* Administrator pages share the palette without changing permissions. */
+body:has(.admin-mark){background:#101529;color:#f3f3ff}
+body:has(.admin-mark) header{background:#151b31;border-color:#35405d}
+body:has(.admin-mark) .brand{display:inline-flex;align-items:center;gap:9px;color:#f3f3ff;font:600 23px/1 'Segoe UI Variable Display','Segoe UI',sans-serif;letter-spacing:-.6px}
+body:has(.admin-mark) .admin-brand span{color:inherit}
+body:has(.admin-mark) .brand em{font:italic 500 24px/1 Georgia,serif;color:#c1b4ff}
+body:has(.admin-mark) .hero{background:radial-gradient(circle at 80% 50%,#5e4b9b75,transparent 45%),linear-gradient(140deg,#232444,#171d37 70%);border-color:#b9a8ff55}
+body:has(.admin-mark) .hero p,body:has(.admin-mark) nav a,body:has(.admin-mark) nav button{color:#b8c1dc}
+body:has(.admin-mark) .hero-icon{color:#b9a8ff}
+body:has(.admin-mark) .panel{background:#192039;border-color:#38425f}
+body:has(.admin-mark) .user-avatar{background:#3b345f;color:#e5ddff}
+body:has(.admin-mark) .user button,body:has(.admin-mark) .panel-head button,body:has(.admin-mark) .settings-form button,body:has(.admin-mark) .email-actions button,body:has(.admin-mark) .verify-form button,body:has(.admin-mark) .unlock-actions button:last-child{background:#b9a8ff;color:#17142b}

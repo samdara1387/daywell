@@ -1,4 +1,4 @@
-"""Start the Python edition of Daywell from its desktop shortcut."""
+"""Start Money Theory from its desktop shortcut."""
 
 import ctypes
 import json
@@ -28,10 +28,10 @@ def health():
             value = json.load(response)
     except (OSError, ValueError):
         return False
-    if value.get('app') != 'Daywell' or value.get('backend') != 'Python':
+    if value.get('app') not in ('Money Theory', 'Daywell') or value.get('backend') != 'Python':
         raise RuntimeError(f'Another app is using local port {PORT}.')
     if value.get('accounts') is not True:
-        raise RuntimeError('An older Daywell server is still running. Restart it to use accounts.')
+        raise RuntimeError('An older local server is still running. Restart it to use accounts.')
     return True
 
 
@@ -43,7 +43,7 @@ def main():
         environment = {**os.environ, 'DAYWELL_PYTHON_DATA_DIR': str(DATA), 'PORT': str(PORT), 'DAYWELL_ACCOUNTS': '1'}
         executable = ROOT / 'runtime' / 'pythonw.exe'
         if not executable.is_file():
-            raise RuntimeError('The bundled Python runtime is missing. Extract the full Daywell Python folder.')
+            raise RuntimeError('The bundled Python runtime is missing. Extract the full Money Theory folder.')
         with (DATA / 'server.log').open('ab') as log:
             subprocess.Popen(
                 [str(executable), str(ROOT / 'server.py')],
@@ -55,10 +55,10 @@ def main():
                 break
             time.sleep(0.25)
         else:
-            raise RuntimeError('Daywell Python did not start. See ' + str(DATA / 'server.log'))
+            raise RuntimeError('Money Theory did not start. See ' + str(DATA / 'server.log'))
 
     if '--check' in sys.argv:
-        print('Daywell Python is ready at ' + URL)
+        print('Money Theory is ready at ' + URL)
         return
 
     # Edge's app mode makes the local website behave like a desktop window.
@@ -84,4 +84,4 @@ if __name__ == '__main__':
         if '--check' in sys.argv:
             print(str(error))
             sys.exit(1)
-        ctypes.windll.user32.MessageBoxW(0, str(error), 'Daywell Python could not open', 0x10)
+        ctypes.windll.user32.MessageBoxW(0, str(error), 'Money Theory could not open', 0x10)

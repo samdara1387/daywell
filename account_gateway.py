@@ -54,7 +54,7 @@ class AccountGateway:
         if not path.startswith('/api/'):
             return None
         if method == 'GET' and path == '/api/health':
-            return 200, {'ok': True, 'app': 'Daywell', 'version': '3.1', 'backend': 'Python', 'accounts': True}
+            return 200, {'ok': True, 'app': 'Money Theory', 'version': '3.1', 'backend': 'Python', 'accounts': True}
         token = self.token(headers)
         user = self.accounts.session(token) if token else None
         if method == 'POST' and path in ('/api/auth/signup', '/api/auth/login'):

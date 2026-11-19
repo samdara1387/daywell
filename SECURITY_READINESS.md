@@ -1,4 +1,4 @@
-# Daywell security and release gate
+# Money Theory security and release gate
 
 Updated 2026-11-10. This describes the installed local Python app. A passing unit test is not a penetration test.
 
@@ -13,7 +13,7 @@ Updated 2026-11-10. This describes the installed local Python app. A passing uni
 
 ## Local app: remaining risks
 
-- Financial SQLite files and automatic backups are not encrypted by Daywell. A compromised Windows account, administrator account, or unencrypted disk can reveal them. Use Windows device encryption or BitLocker where available, protect the Windows login, and keep exported backups private.
+- Financial SQLite files and automatic backups are not encrypted by Money Theory. A compromised Windows account, administrator account, or unencrypted disk can reveal them. Use Windows device encryption or BitLocker where available, protect the Windows login, and keep exported backups private.
 - The user-requested five-character minimum is accepted only in local mode. Longer unique passphrases are strongly recommended. An email ownership code does not compensate for a weak login password.
 - The local administrator can intentionally view every account's records. Avoid adding real multiuser data to this laptop until privacy terms, admin access practices, and recovery are reviewed.
 - No independent security assessment or adversarial penetration test has been completed.

@@ -1,4 +1,4 @@
--- Daywell cloud foundation. No personal data is inserted by this migration.
+-- Money Theory cloud foundation. Legacy daywell_* table names are retained for compatibility.
 -- Each row belongs to one Supabase Auth user, enforced by Postgres RLS.
 
 create schema if not exists private;

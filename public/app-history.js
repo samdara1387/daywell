@@ -1,6 +1,6 @@
 'use strict';
 
-// Keep a small history of Daywell screens and dates. This never leaves the app.
+// Keep a small history of Money Theory screens and dates. This never leaves the app.
 const DaywellAppHistory = (() => {
   const entries = [];
   let index = -1;
@@ -44,7 +44,7 @@ const DaywellAppHistory = (() => {
     updateButtons();
   }
 
-  // Restore a screen from our own app history, never a browser page outside Daywell.
+  // Restore a screen from our own app history, never a browser page outside Money Theory.
   function move(direction) {
     const next = index + direction;
     if (next < 0 || next >= entries.length || !restoreScreen) return false;

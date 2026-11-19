@@ -1,4 +1,4 @@
-# Daywell cloud foundation
+# Money Theory cloud foundation
 
 `001_daywell_schema.sql` is the proposed cloud database foundation. It defines four per-user public tables with row level security and two private administrator tables. It contains no customer records or credentials. Publishing this file does not apply it to a database.
 

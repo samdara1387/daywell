@@ -54,5 +54,5 @@ form.addEventListener('submit',async event=>{
 });
 fetch('/api/auth/setup').then(response=>response.json()).then(result=>{
   firstAccount=!!result.firstAccount;emailConfigured=!!result.emailConfigured;
-  if(firstAccount){show('signup');document.querySelector('#form-intro').textContent='Set up the first account to protect your existing Daywell records.'}
+  if(firstAccount){show('signup');document.querySelector('#form-intro').textContent='Set up the first account to protect your existing Money Theory records.'}
 }).catch(()=>{});

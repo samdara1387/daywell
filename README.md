@@ -1,6 +1,6 @@
-# Daywell
+# Money Theory
 
-Daywell is a local personal money and everyday planning app. Its backend is mostly Python; HTML, CSS, and JavaScript draw the interface and read statement files. This repository contains source code and fictional tests. Personal records and credentials stay outside the repository.
+Money Theory is a local personal money and everyday planning app. Its backend is mostly Python; HTML, CSS, and JavaScript draw the interface and read statement files. This repository contains source code and fictional tests. Personal records and credentials stay outside the repository. The project was originally called Daywell; existing storage keys and database names are retained so saved records remain compatible.
 
 ## Stage 1: core rules
 
@@ -50,9 +50,9 @@ Install Python 3.13 or newer. In PowerShell, from this folder, use a disposable 
 python -m unittest discover -s tests -p "test_*.py" -q
 node --test tests/*.test.cjs
 $env:DAYWELL_ACCOUNTS = "1"
-python server.py --port 0 --data-dir "$env:TEMP\DaywellSourceDemo"
+python server.py --port 0 --data-dir "$env:TEMP\MoneyTheorySourceDemo"
 ```
 
-Open the local address printed by the server. Stop it with Ctrl+C. The JavaScript tests require Node.js. `Start Daywell.cmd`, `Start Daywell.vbs`, and `launcher.py` are for the packaged Windows desktop edition, which includes a separately distributed Python runtime. That runtime, personal databases, statements, exports, backups, and credentials are excluded from GitHub.
+Open the local address printed by the server. Stop it with Ctrl+C. The JavaScript tests require Node.js. `Start Money Theory.cmd`, `Start Money Theory.vbs`, and `launcher.py` are for the packaged Windows desktop edition, which includes a separately distributed Python runtime. That runtime, personal databases, statements, exports, backups, and credentials are excluded from GitHub.
 
-See `DEVELOPMENT.md` for the work loop, `LEARN_PYTHON.md` for annotated code, and `SECURITY_READINESS.md` for the online release gate. The cloud schema in `cloud/` is source only; Daywell is not deployed online.
+See `DEVELOPMENT.md` for the work loop, `LEARN_PYTHON.md` for annotated code, and `SECURITY_READINESS.md` for the online release gate. The cloud schema in `cloud/` is source only; Money Theory is not deployed online.
