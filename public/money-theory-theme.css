@@ -70,3 +70,19 @@ body:has(.admin-mark) .hero-icon{color:#b9a8ff}
 body:has(.admin-mark) .panel{background:#192039;border-color:#38425f}
 body:has(.admin-mark) .user-avatar{background:#3b345f;color:#e5ddff}
 body:has(.admin-mark) .user button,body:has(.admin-mark) .panel-head button,body:has(.admin-mark) .settings-form button,body:has(.admin-mark) .email-actions button,body:has(.admin-mark) .verify-form button,body:has(.admin-mark) .unlock-actions button:last-child{background:#b9a8ff;color:#17142b}
+
+/* A slim scrollbar keeps long pages and dialogs usable without a bright rail. */
+html{scrollbar-gutter:stable}
+html,body,dialog,.table-wrap,.preview-table,.helper-messages,.month-compare-scroll,.nav-more>div{
+  scrollbar-width:thin;
+  scrollbar-color:color-mix(in srgb,var(--accent) 46%,var(--card2)) transparent;
+}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{
+  background:color-mix(in srgb,var(--accent) 46%,var(--card2));
+  border:2px solid transparent;
+  background-clip:padding-box;
+  border-radius:999px;
+}
+::-webkit-scrollbar-thumb:hover{background:var(--accent);background-clip:padding-box}
