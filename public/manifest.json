@@ -1,0 +1,14 @@
+{
+  "name": "Money Theory",
+  "short_name": "Money Theory",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#11172c",
+  "theme_color": "#11172c",
+  "icons": [
+    { "src": "/money-theory-icon-44.png", "sizes": "44x44", "type": "image/png", "purpose": "any" },
+    { "src": "/money-theory-icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/money-theory-icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}
